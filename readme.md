@@ -4,6 +4,18 @@
 
 A backend api used for file exploration and download.
 
+### Configuration
+1. Install npm dependencies
+```
+npm i
+```
+2. Create config.env
+```
+NODE_ENV=development 
+PORT=3000  
+ROOT_FOLDER=c:/Dev
+```
+
 - /api/v1/hist?path={relative_path}
 
 Result:
