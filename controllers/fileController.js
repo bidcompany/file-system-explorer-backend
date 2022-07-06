@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 exports.getList = (req, res) => {
-    console.log(req.query);
     const path = req.query.path;
     var dir = "";
     if(path){
@@ -47,7 +46,6 @@ exports.getList = (req, res) => {
 };
 
 exports.getFile = (req, res) => {
-    console.log(req.query);
     const file = req.query.file;
     try{
         if(file){
