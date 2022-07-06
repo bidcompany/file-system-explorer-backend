@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "4dee5043-6970-40df-a4c4-6ea6c443f671",
+		"name": "Cargeas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6136685"
+	},
+	"item": [
+		{
+			"name": "Cargeas",
+			"item": [
+				{
+					"name": "Download",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/hist/donwload?file=cargeas-backend/app.js",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"hist",
+								"donwload"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "cargeas-backend/app.js"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/hist?path=cargeas-backend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"hist"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "cargeas-backend"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

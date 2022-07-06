@@ -14,9 +14,16 @@ exports.getList = (req, res) => {
 
             fs.readdirSync(dirPath).forEach(file => {
                 if(fs.statSync(`${dirPath}/${file}`).isDirectory()){
-                    result.push({"type": "directory", "name": file});
+                    result.push({
+                        "type": "directory", 
+                        "ext" : null , 
+                        "name": file});
                 }else{
-                    result.push({"type": "file", "name": file});
+                    result.push({
+                        "type": "file", 
+                        "ext" : file.substring(file.indexOf(".") + 1 ) , 
+                        "name": file
+                    });
                 }
             });
             res.status(200).json({

@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 
 // 3. ROUTES
-app.use('/api/v1/files', fileRouter);
+app.use('/api/v1/hist', fileRouter);
 // route undefined
 app.all('*', (req, res, next) => {
     res.status(404).json({
