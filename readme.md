@@ -16,6 +16,7 @@ PORT=3000
 ROOT_FOLDER=c:/Dev
 ```
 
+### Usage 
 - /api/v1/hist?path={relative_path}
 
 Result:
