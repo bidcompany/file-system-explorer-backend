@@ -3,7 +3,6 @@ const fs = require('fs');
 exports.getList = (req, res) => {
     const path = req.query.path;
     const secret = req.query.secret;
-    console.log(secret);
     if(secret != process.env.S3CR3T ){
         res.status(401).json({
             status: 'fail',
@@ -56,7 +55,6 @@ exports.getList = (req, res) => {
 exports.getFile = (req, res) => {
     const file = req.query.file;
     const secret = req.query.secret;
-    console.log(secret);
     if(secret != process.env.S3CR3T ){
         res.status(401).json({
             status: 'fail',
