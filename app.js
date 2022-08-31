@@ -14,6 +14,13 @@ if(process.env.NODE_ENV == 'development') {
 
 app.use(express.json());
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     // console.log(req.requestTime);
