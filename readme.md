@@ -15,6 +15,10 @@ NODE_ENV=development
 PORT=3000  
 ROOT_FOLDER=c:/Dev
 ```
+3. Launch server.js
+```
+nodemon server.js
+```
 
 ### Usage 
 - /api/v1/hist?path={relative_path}
