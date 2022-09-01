@@ -56,4 +56,5 @@ Result:
 ```
 
 - /api/v1/hist/donwload?file={relative_path/filename.ext}
-
+- /api/v1/hist/size?file={relative_path}
+- /api/v1/hist/folder?file={relative_path}
