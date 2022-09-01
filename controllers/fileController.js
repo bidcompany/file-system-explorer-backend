@@ -158,7 +158,7 @@ exports.getCompressedFolder = (req, res) => {
                         cwd: dirPath
                     });
 
-                    res.status(200).download(dirPath + '/../${folderName}.tar.gz');
+                    res.status(200).download(dirPath + `/../${folderName}.tar.gz`);
 
                 }else{
                     res.status(413).json({
