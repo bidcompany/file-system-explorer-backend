@@ -152,7 +152,7 @@ exports.getCompressedFolder = (req, res) => {
         if(fs.statSync(`${dirPath}`).isDirectory()){
             fastFolderSize('.', (err, bytes) => {
                 var size = bytes/1024/1024/1024;
-                var folderName = thePath.substring(thePath.lastIndexOf('/') + 1)
+                var folderName = dirPath.substring(dirPath.lastIndexOf('/') + 1)
                 if(size <= 1 ){
                     child_process.execSync(`tar -zcf ../${folderName}.tar.gz .`, {
                         cwd: dirPath
