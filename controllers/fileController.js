@@ -153,11 +153,11 @@ exports.getCompressedFolder = (req, res) => {
             fastFolderSize('.', (err, bytes) => {
                 var size = bytes/1024/1024/1024;
                 if(size <= 1 ){
-                    child_process.execSync(`tar -zcf archive.tar.gz . --warning=no-file-changed`, {
+                    child_process.execSync(`tar -zcf ../archive.tar.gz .`, {
                         cwd: dirPath
                     });
 
-                    res.status(200).download(dirPath + '/archive.tar.gz');
+                    res.status(200).download(dirPath + '/../archive.tar.gz');
 
                 }else{
                     res.status(413).json({
