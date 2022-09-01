@@ -1,4 +1,6 @@
 const fs = require('fs');
+const fastFolderSize = require('fast-folder-size');
+const child_process = require('child_process');
 
 exports.getList = (req, res) => {
     const path = req.query.path;
@@ -85,4 +87,96 @@ exports.getFile = (req, res) => {
 
 
 };
-  
+
+
+
+exports.getFolderSize = (req, res) => {
+    
+    const path = req.query.path;
+    const secret = req.query.secret;
+    if(secret != process.env.S3CR3T ){
+        res.status(401).json({
+            status: 'fail',
+            message: 'Not authorized.'
+        });
+    }
+    var dir = "";
+    if(path){
+        dir = `/${path}`;
+    }
+    var result = [] ;
+    var dirPath = `${process.env.ROOT_FOLDER}${dir}`;
+    try{
+        if(fs.statSync(`${dirPath}`).isDirectory()){
+            fastFolderSize('.', (err, bytes) => {
+                var size = bytes/1024/1024/1024;
+                res.status(200).json({
+                    status: 'success',
+                    data: { "folder" : dirPath , "size (GB)" : size.toFixed(2)}
+                });
+              })
+        }
+        else{
+            res.status(405).json({
+                status: 'success',
+                data: { "message": `${path} is not a directory` }
+            });
+        }
+    }catch(err){
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+};
+
+
+
+exports.getCompressedFolder = (req, res) => {
+    
+    const path = req.query.path;
+    const secret = req.query.secret;
+    if(secret != process.env.S3CR3T ){
+        res.status(401).json({
+            status: 'fail',
+            message: 'Not authorized.'
+        });
+    }
+    var dir = "";
+    if(path){
+        dir = `/${path}`;
+    }
+    var result = [] ;
+    var dirPath = `${process.env.ROOT_FOLDER}${dir}`;
+    try{
+        if(fs.statSync(`${dirPath}`).isDirectory()){
+            fastFolderSize('.', (err, bytes) => {
+                var size = bytes/1024/1024/1024;
+                if(size <= 1 ){
+                    child_process.execSync(`tar -zcf archive.tar.gz .`, {
+                        cwd: dirPath
+                    });
+
+                    res.status(200).download(dirPath + '/archive.tar.gz');
+
+                }else{
+                    res.status(413).json({
+                        status: 'error',
+                        data: { "folder" : dirPath , "size (GB)" : size.toFixed(2) , "message" : "Folder size greater than 1GB"}
+                    });
+                }
+              })
+        }
+        else{
+            res.status(405).json({
+                status: 'success',
+                data: { "message": `${path} is not a directory` }
+            });
+        }
+    }catch(err){
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+};

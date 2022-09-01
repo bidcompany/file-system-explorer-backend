@@ -15,5 +15,14 @@ router
     .get(fileController.getFile)
     ;
 
+router
+    .route('/size')
+    .get(fileController.getFolderSize)
+    ;
+
+router
+    .route('/folder')
+    .get(fileController.getCompressedFolder)
+    ;
 
 module.exports = router ;  
