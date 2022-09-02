@@ -91,7 +91,7 @@ exports.getFile = (req, res) => {
 
 exports.getFolderSize = (req, res) => {
 
-    const path = req.query.path;
+    const file = req.query.file;
     const secret = req.query.secret;
     if(secret != process.env.S3CR3T ){
         res.status(401).json({
@@ -100,10 +100,9 @@ exports.getFolderSize = (req, res) => {
         });
     }
     var dir = "";
-    if(path){
-        dir = `/${path}`;
+    if(file){
+        dir = `${file}`;
     }
-    var result = [] ;
     var dirPath = `${process.env.ROOT_FOLDER}${dir}`;
     try{
         if(fs.statSync(`${dirPath}`).isDirectory()){
@@ -118,7 +117,7 @@ exports.getFolderSize = (req, res) => {
         else{
             res.status(405).json({
                 status: 'success',
-                data: { "message": `${path} is not a directory` }
+                data: { "message": `${file} is not a directory` }
             });
         }
     }catch(err){
@@ -133,7 +132,7 @@ exports.getFolderSize = (req, res) => {
 
 exports.getCompressedFolder = (req, res) => {
 
-    const path = req.query.path;
+    const file = req.query.file;
     const secret = req.query.secret;
     if(secret != process.env.S3CR3T ){
         res.status(401).json({
@@ -142,8 +141,8 @@ exports.getCompressedFolder = (req, res) => {
         });
     }
     var dir = "";
-    if(path){
-        dir = `/${path}`;
+    if(file){
+        dir = `${file}`;
     }
     var dirPath = `${process.env.ROOT_FOLDER}${dir}`;
     try{
@@ -169,7 +168,7 @@ exports.getCompressedFolder = (req, res) => {
         else{
             res.status(405).json({
                 status: 'success',
-                data: { "message": `${path} is not a directory` }
+                data: { "message": `${file} is not a directory` }
             });
         }
     }catch(err){
