@@ -11,7 +11,7 @@ router
     ;
 
 router
-    .route('/donwload')
+    .route('/download')
     .get(fileController.getFile)
     ;
 

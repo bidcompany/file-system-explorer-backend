@@ -65,11 +65,10 @@ exports.getFile = (req, res) => {
     }
     try{
         if(file){
-            var result = [] ;
             var filePath = `${process.env.ROOT_FOLDER}/${file}`;
             
             if (fs.existsSync(filePath)){
-                console.log(filePath);
+                //console.log(filePath);
                 res.status(200).download(filePath);
             }
         }else{
@@ -91,7 +90,7 @@ exports.getFile = (req, res) => {
 
 
 exports.getFolderSize = (req, res) => {
-    
+
     const path = req.query.path;
     const secret = req.query.secret;
     if(secret != process.env.S3CR3T ){
@@ -133,7 +132,7 @@ exports.getFolderSize = (req, res) => {
 
 
 exports.getCompressedFolder = (req, res) => {
-    
+
     const path = req.query.path;
     const secret = req.query.secret;
     if(secret != process.env.S3CR3T ){
@@ -146,7 +145,6 @@ exports.getCompressedFolder = (req, res) => {
     if(path){
         dir = `/${path}`;
     }
-    var result = [] ;
     var dirPath = `${process.env.ROOT_FOLDER}${dir}`;
     try{
         if(fs.statSync(`${dirPath}`).isDirectory()){
