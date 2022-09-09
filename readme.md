@@ -1,6 +1,6 @@
 
-# Cargeas API Backend
-###### itacsq 2022.07.06 
+# File System Explorer API Backend
+###### itacsq 2022.09.09 
 
 A backend api used for file exploration and download.
 
@@ -13,7 +13,7 @@ npm i
 ```
 NODE_ENV=development 
 PORT=3000  
-ROOT_FOLDER=c:/Dev
+ROOT_FOLDER=c:/path/to/root
 ```
 3. Launch server.js
 ```
