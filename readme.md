@@ -21,6 +21,7 @@ nodemon server.js
 ```
 
 ### Usage 
+**Navigate to folder**
 - /api/v1/hist?path={relative_path}
 
 Result:
@@ -55,6 +56,11 @@ Result:
 }
 ```
 
+**Download file**
 - /api/v1/hist/download?file={relative_path/filename.ext}
+
+**Check size of folder**
 - /api/v1/hist/size?file={relative_path}
+
+**Compress and download folder**
 - /api/v1/hist/folder?file={relative_path}
