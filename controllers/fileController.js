@@ -34,8 +34,7 @@ exports.getList = (req, res) => {
                     });
                 }
             });
-            result.sort((a, b) => a.name.localeCompare(b.name));
-            result.sort((a, b) => a.type.localeCompare(b.type));
+            result.sort((a, b) => a.type.localeCompare(b.type) || a.name.localeCompare(b.name)) ;
             res.status(200).json({
                 status: 'success',
                 data: { result }
