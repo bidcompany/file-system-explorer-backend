@@ -25,4 +25,9 @@ router
     .get(fileController.getCompressedFolder)
     ;
 
+router
+    .route('/hello')
+    .get(fileController.hello)
+    ;
+
 module.exports = router ;  

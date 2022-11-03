@@ -2,6 +2,15 @@ const fs = require('fs');
 const fastFolderSize = require('fast-folder-size');
 const child_process = require('child_process');
 
+
+exports.hello = (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        message: 'Hello World!'
+    });
+}
+
+
 exports.getList = (req, res) => {
     const path = req.query.path;
     const secret = req.query.secret;
