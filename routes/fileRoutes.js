@@ -4,10 +4,14 @@ const fileController = require('./../controllers/fileController');
 const router = express.Router();
 
 
-
 router
     .route('/')
     .get(fileController.getList)
+    ;
+
+router
+    .route('/login')
+    .get(fileController.login)
     ;
 
 router
